@@ -1,26 +1,19 @@
 const widgetContainer = document.getElementById('widgetContainer');
 
-const settingsPageURL = '..common/core/settings-core';
+// Build all paths with the URL API so they resolve correctly whether this
+// page is opened as /settings/ or /settings/index.html, including on
+// GitHub Pages where the project lives below /now-playing/.
+const settingsCoreURL = new URL('../common/core/settings-core/', window.location.href);
+const settingsJSONURL = new URL('settings.json', window.location.href);
+const widgetURL = new URL('../', window.location.href);
 
-const currentURL = window.location.href;
+settingsCoreURL.searchParams.set('settingsJson', settingsJSONURL.href);
+settingsCoreURL.searchParams.set('widgetURL', widgetURL.href);
+settingsCoreURL.searchParams.set('usesStreamerBot', 'false');
 
-let settingsJSON;
-let baseURL = currentURL;
+console.debug('Window Ref: ' + window.location.href);
+console.debug('Settings Core URL: ' + settingsCoreURL.href);
+console.debug('Settings JSON: ' + settingsJSONURL.href);
+console.debug('Widget URL: ' + widgetURL.href);
 
-if (baseURL.endsWith("index.html"))
-    baseURL = baseURL.replace("index.html", "");
-
-settingsJSON = "?settingsJson=" + baseURL + "settings.json";
-
-const lastSlashIndex = baseURL.lastIndexOf("/");
-let widgetURL = "&widgetURL=" + baseURL.replace("/settings", "");
-
-const usesStreamerBot = "&usesStreamerBot=false";
-
-console.debug("Window Ref: " + window.location.href);
-console.debug("Base URL: " + baseURL);
-console.debug("Settings JSON: " + settingsJSON);
-console.debug("Widget URL: " + widgetURL);
-console.debug("Uses Streamer Bot: " + usesStreamerBot);
-
-widgetContainer.src = settingsPageURL + settingsJSON + widgetURL + usesStreamerBot;
+widgetContainer.src = settingsCoreURL.href;
