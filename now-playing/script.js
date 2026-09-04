@@ -23,7 +23,7 @@ const mainContainer = document.getElementById('main-container');
 // OPTIONS //
 /////////////
 
-const smtcBridgeAddress = urlParams.get('smtcBridgeAddress') || '0.0.0.0';
+const smtcBridgeAddress = urlParams.get('smtcBridgeAddress') || '127.0.0.1';
 const smtcBridgePort = urlParams.get('smtcBridgePort') || '5000';
 
 const theme = urlParams.get('theme') || 'standard';
