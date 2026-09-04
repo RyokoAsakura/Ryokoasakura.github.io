@@ -1,0 +1,11 @@
+GitHub Pages deployment package
+===============================
+
+Upload the CONTENTS of this directory to the repository root that publishes:
+https://<username>.github.io/now-playing/
+
+Important:
+- The app no longer depends on a hidden .common directory.
+- Shared assets live in common/.
+- Paths are relative/project-site-safe, so the repository can be served below /now-playing/.
+- Do not upload a nested now-playing-github-pages folder unless that is intentionally your Pages source directory.

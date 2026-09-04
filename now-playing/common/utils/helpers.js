@@ -320,7 +320,7 @@ function RandomHex(str) {
     return hslToHex(hue, saturation, lightness);
 }
 
-// Used to construct a message from "parts" variablcommonly found in Streamer.bot chat messages
+// Used to construct a message from "parts" variable commonly found in Streamer.bot chat messages
 function ConstructMessageFromParts(parts) {
     return parts.map(part => {
         if (part.emoji)
@@ -359,7 +359,7 @@ function ConstructMessageFromParts(parts) {
     }).join('');
 }
 
-// Used to construct a message from "emotes" variablcommonly found in Streamer.bot chat messages
+// Used to construct a message from "emotes" variable commonly found in Streamer.bot chat messages
 function RenderMessageWithEmotesHTML(originalMessage, emotes) {
     if (!emotes || emotes.length === 0) return originalMessage;
 
@@ -472,10 +472,10 @@ async function GetAccentPalette(imageUrl) {
 // Generic popup
 function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, button) {
     // 1. Check if a popup is already on screen
-    const existingOverlay = document.getElementById('globacommon-overlay');
+    const existingOverlay = document.getElementById('global-common-overlay');
     
     // If it exists AND isn't already in the middle of fading out, DO NOTHING
-    if (existingOverlay && !existingOverlay.classList.containscommon-closing')) {
+    if (existingOverlay && !existingOverlay.classList.contains('common-closing')) {
         return null; 
     }
     
@@ -485,11 +485,11 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
     }
 
     // 2. Inject global styles if they don't already exist in the head
-    if (!document.getElementById('globacommon-popup-styles')) {
+    if (!document.getElementById('global-common-popup-styles')) {
         const styleSheet = document.createElement('style');
-        styleSheet.id = 'globacommon-popup-styles';
+        styleSheet.id = 'global-common-popup-styles';
         styleSheet.innerText = `
-            #globacommon-overlay {
+            #global-common-overlay {
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -502,9 +502,9 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
                 align-items: center;
                 justify-content: center;
                 z-index: 999999;
-                animationcommonFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation: commonFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             }
-           common-popup-card {
+            .common-popup-card {
                 width: 90%;
                 max-width: 500px;
                 border-radius: 24px;
@@ -515,23 +515,23 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
                 overflow: hidden;
                 box-shadow: 0 30px 60px rgba(0,0,0,0.4), 
                             0 0 0 1px rgba(255, 255, 255, 0.08);
-                animationcommonScaleIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation: commonScaleIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
                 gap: 32px;
                 padding: 32px;
             }
-           common-popup-icon-container {
+            .common-popup-icon-container {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background: transparent;
             }
-           common-popup-img {
+            .common-popup-img {
                 height: 48px;
                 width: auto;
                 object-fit: contain;
                 display: block;
                 }
-           common-popup-text-content {
+            .common-popup-text-content {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
@@ -539,7 +539,7 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
                 text-align: left;
                 gap: 8px;
             }
-           common-popup-title {
+            .common-popup-title {
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 font-size: 22px;
                 font-weight: 700;
@@ -547,10 +547,10 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
                 letter-spacing: -0.02em;
                 line-height: 1.2;
             }
-           common-popup-title:last-child {
+            .common-popup-title:last-child {
                 margin-bottom: 0;
             }
-           common-popup-subtitle {
+            .common-popup-subtitle {
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -558,14 +558,14 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
                 margin: 0;
                 line-height: 1.5;
             }
-           common-popup-attribute {
+            .common-popup-attribute {
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 font-size: 13px;
                 color: rgba(255, 255, 255, 0.4);
                 word-break: break-all;
             }
             /* 💎 GLASSMORPHIC BUTTON STYLES */
-           common-popup-button {
+            .common-popup-button {
                 margin-top: 6px;
                 padding: 10px 20px;
                 border-radius: 12px;
@@ -580,30 +580,30 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
                 text-align: center;
                 width: fit-content;
             }
-           common-popup-button:hover {
+            .common-popup-button:hover {
                 background: rgba(255, 255, 255, 0.2);
                 border-color: rgba(255, 255, 255, 0.3);
             }
-           common-popup-button:active {
+            .common-popup-button:active {
                 transform: scale(0.97);
             }
-            @keyframecommonFadeIn {
+            @keyframes commonFadeIn {
                 from { opacity: 0; } to { opacity: 1; }
             }
-            @keyframecommonScaleIn {
+            @keyframes commonScaleIn {
                 from { transform: scale(0.95) translateY(10px); opacity: 0; }
                 to { transform: scale(1) translateY(0); opacity: 1; }
             }
-            #globacommon-overlacommon-closing {
-                animationcommonFadeOut 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            #global-common-overlay.common-closing {
+                animation: commonFadeOut 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             }
-           common-closingcommon-popup-card {
-                animationcommonScaleOut 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            .common-closing .common-popup-card {
+                animation: commonScaleOut 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             }
-            @keyframecommonFadeOut {
+            @keyframes commonFadeOut {
                 from { opacity: 1; } to { opacity: 0; }
             }
-            @keyframecommonScaleOut {
+            @keyframes commonScaleOut {
                 from { transform: scale(1) translateY(0); opacity: 1; }
                 to { transform: scale(0.95) translateY(10px); opacity: 0; }
             }
@@ -613,39 +613,39 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
 
     // 3. Create elements
     const overlay = document.createElement('div');
-    overlay.id = 'globacommon-overlay';
+    overlay.id = 'global-common-overlay';
 
     const card = document.createElement('div');
-    card.className =common-popup-card';
+    card.className = 'common-popup-card';
     card.style.background = background || 'linear-gradient(135deg, #1a1a1e 0%, #111113 100%)';
 
     // 4. Construct Inner Content (Strict Conditional Rendering)
     const iconMarkup = iconSrc 
-        ? `<div classcommon-popup-icon-container">
-               <img src="${iconSrc}" classcommon-popup-img" alt="Alert Icon" />
+        ? `<div class="common-popup-icon-container">
+               <img src="${iconSrc}" class="common-popup-img" alt="Alert Icon" />
            </div>` 
         : '';
         
     const titleMarkup = title 
-        ? `<label classcommon-popup-title">${title}</label>` 
+        ? `<label class="common-popup-title">${title}</label>` 
         : '';
         
     const subtitleMarkup = subtitle 
-        ? `<label classcommon-popup-subtitle">${subtitle}</label>` 
+        ? `<label class="common-popup-subtitle">${subtitle}</label>` 
         : '';
         
     const attributeMarkup = attribute 
-        ? `<label classcommon-popup-attribute">${attribute}</label>`
+        ? `<label class="common-popup-attribute">${attribute}</label>`
         : '';
 
     // Render button conditional markup
     const buttonMarkup = (button && button.text)
-        ? `<button classcommon-popup-button">${button.text}</button>`
+        ? `<button class="common-popup-button">${button.text}</button>`
         : '';
 
     card.innerHTML = `
         ${iconMarkup}
-        <div classcommon-popup-text-content">
+        <div class="common-popup-text-content">
             ${titleMarkup}
             ${subtitleMarkup}
             ${attributeMarkup}
@@ -655,7 +655,7 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
 
     // 5. Setup Action Listeners if Button Exists
     if (button && button.text && button.action) {
-        const actionBtn = card.querySelector(common-popup-button');
+        const actionBtn = card.querySelector('.common-popup-button');
         if (actionBtn) {
             actionBtn.addEventListener('click', () => {
                 if (typeof button.action === 'function') {
@@ -674,7 +674,7 @@ function SplashscreenPopup(iconSrc, title, subtitle, attribute, background, butt
     return {
         element: overlay,
         close: () => {
-            overlay.classList.addcommon-closing');
+            overlay.classList.add('common-closing');
             overlay.addEventListener('animationend', (event) => {
                 if (event.target === overlay) {
                     overlay.remove();

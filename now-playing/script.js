@@ -23,6 +23,8 @@ const mainContainer = document.getElementById('main-container');
 // OPTIONS //
 /////////////
 
+// Use an explicit loopback address by default. This is more reliable from an HTTPS
+// GitHub Pages origin than the unspecified 0.0.0.0 address.
 const smtcBridgeAddress = urlParams.get('smtcBridgeAddress') || '127.0.0.1';
 const smtcBridgePort = urlParams.get('smtcBridgePort') || '5000';
 
@@ -209,7 +211,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function ShowWaitingForSMTCBridgePopup() {
     const newPopup = SplashscreenPopup(
-        'common/resources/smtc-bridge-icon.png', 
+        './common/resources/smtc-bridge-icon.png', 
         'Waiting for SMTC Bridge', 
         'Please launch SMTC Bridge',
         '', // Attribute text
@@ -230,7 +232,7 @@ function ShowWaitingForSMTCBridgePopup() {
 
 function ShowSMTCBridgeUpdateRequiredPopup(installedVersion) {
     const newPopup = SplashscreenPopup(
-        'common/resources/smtc-bridge-icon.png',
+        './common/resources/smtc-bridge-icon.png',
         'Update Required',
         'Your version of SMTC Bridge is out of date.',
         `<b>Installed Version: ${installedVersion}</b><br><b>New Version: ${REQUIRED_VERSION}</b>`,
@@ -250,7 +252,7 @@ function ShowSMTCBridgeUpdateRequiredPopup(installedVersion) {
 
 function ShowSMTCBridgeUpdateAvailablePopup(installedVersion) {
     const newPopup = SplashscreenPopup(
-        'common/resources/smtc-bridge-icon.png',
+        './common/resources/smtc-bridge-icon.png',
         'Update Available',
         'A new version of SMTC Bridge is available.',
         `<b>Installed Version: ${installedVersion}</b><br><b>New Version: ${REQUIRED_VERSION}</b>`,
@@ -274,7 +276,7 @@ function ShowSMTCBridgeUpdateAvailablePopup(installedVersion) {
 
 function ShowErrorPopup(errorMessage) {
     const newPopup = SplashscreenPopup(
-        'common/resources/smtc-bridge-icon.png',
+        './common/resources/smtc-bridge-icon.png',
         'SMTC Bridge Error',
         `I'm a shit programmer and I fucked something up.`,
         `Error: ${errorMessage}`,
